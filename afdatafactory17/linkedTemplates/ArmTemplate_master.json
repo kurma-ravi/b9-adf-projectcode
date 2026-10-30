@@ -1,0 +1,187 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "afdatafactory17"
+		},
+		"LS_Onprem_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Onprem'"
+		},
+		"LS_S3_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'LS_S3'"
+		},
+		"linkedservice1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedservice1'"
+		},
+		"linkedserviceamar_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedserviceamar'"
+		},
+		"LS_AKV_SQLDB_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://b9keyvaultsqldbsept.vault.azure.net/"
+		},
+		"LS_DB_sept_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqldatabaseserversept.database.windows.net"
+		},
+		"LS_DB_sept_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azureSQLDB-CI"
+		},
+		"LS_DB_sept_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adeazuresql"
+		},
+		"LS_Onprem_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "127.0.0.1"
+		},
+		"LS_Onprem_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "b9_sql_practice"
+		},
+		"LS_Onprem_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "root"
+		},
+		"LS_S3_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIA36I7PG4KEDUKXB42"
+		},
+		"linkedservice1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakestorage17.dfs.core.windows.net/"
+		},
+		"linkedserviceamar_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakestorage2003.dfs.core.windows.net/"
+		},
+		"TG_BackupFiles_StorageEvent_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/802ef90a-ec01-4f2c-9b48-b3d2b9c3814b/resourceGroups/linga17/providers/Microsoft.Storage/storageAccounts/datalakestorage17"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "afdatafactory17_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_S3_secretAccessKey": {
+						"value": "[parameters('LS_S3_secretAccessKey')]"
+					},
+					"linkedservice1_accountKey": {
+						"value": "[parameters('linkedservice1_accountKey')]"
+					},
+					"linkedserviceamar_accountKey": {
+						"value": "[parameters('linkedserviceamar_accountKey')]"
+					},
+					"LS_AKV_SQLDB_properties_typeProperties_baseUrl": {
+						"value": "[parameters('LS_AKV_SQLDB_properties_typeProperties_baseUrl')]"
+					},
+					"LS_S3_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('LS_S3_properties_typeProperties_accessKeyId')]"
+					},
+					"linkedservice1_properties_typeProperties_url": {
+						"value": "[parameters('linkedservice1_properties_typeProperties_url')]"
+					},
+					"linkedserviceamar_properties_typeProperties_url": {
+						"value": "[parameters('linkedserviceamar_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "afdatafactory17_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_Onprem_password": {
+						"value": "[parameters('LS_Onprem_password')]"
+					},
+					"LS_DB_sept_properties_typeProperties_server": {
+						"value": "[parameters('LS_DB_sept_properties_typeProperties_server')]"
+					},
+					"LS_DB_sept_properties_typeProperties_database": {
+						"value": "[parameters('LS_DB_sept_properties_typeProperties_database')]"
+					},
+					"LS_DB_sept_properties_typeProperties_userName": {
+						"value": "[parameters('LS_DB_sept_properties_typeProperties_userName')]"
+					},
+					"LS_Onprem_properties_typeProperties_server": {
+						"value": "[parameters('LS_Onprem_properties_typeProperties_server')]"
+					},
+					"LS_Onprem_properties_typeProperties_database": {
+						"value": "[parameters('LS_Onprem_properties_typeProperties_database')]"
+					},
+					"LS_Onprem_properties_typeProperties_username": {
+						"value": "[parameters('LS_Onprem_properties_typeProperties_username')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'afdatafactory17_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "afdatafactory17_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"TG_BackupFiles_StorageEvent_properties_typeProperties_scope": {
+						"value": "[parameters('TG_BackupFiles_StorageEvent_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'afdatafactory17_ArmTemplate_1')]"
+			]
+		}
+	]
+}

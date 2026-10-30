@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "afdatafactory17"
+		},
+		"LS_Onprem_password": {
+			"value": ""
+		},
+		"LS_S3_secretAccessKey": {
+			"value": ""
+		},
+		"linkedservice1_accountKey": {
+			"value": ""
+		},
+		"linkedserviceamar_accountKey": {
+			"value": ""
+		},
+		"LS_AKV_SQLDB_properties_typeProperties_baseUrl": {
+			"value": "https://b9keyvaultsqldbsept.vault.azure.net/"
+		},
+		"LS_DB_sept_properties_typeProperties_server": {
+			"value": "sqldatabaseserversept.database.windows.net"
+		},
+		"LS_DB_sept_properties_typeProperties_database": {
+			"value": "azureSQLDB-CI"
+		},
+		"LS_DB_sept_properties_typeProperties_userName": {
+			"value": "adeazuresql"
+		},
+		"LS_Onprem_properties_typeProperties_server": {
+			"value": "127.0.0.1"
+		},
+		"LS_Onprem_properties_typeProperties_database": {
+			"value": "b9_sql_practice"
+		},
+		"LS_Onprem_properties_typeProperties_username": {
+			"value": "root"
+		},
+		"LS_S3_properties_typeProperties_accessKeyId": {
+			"value": "AKIA36I7PG4KEDUKXB42"
+		},
+		"linkedservice1_properties_typeProperties_url": {
+			"value": "https://datalakestorage17.dfs.core.windows.net/"
+		},
+		"linkedserviceamar_properties_typeProperties_url": {
+			"value": "https://datalakestorage2003.dfs.core.windows.net/"
+		},
+		"TG_BackupFiles_StorageEvent_properties_typeProperties_scope": {
+			"value": "/subscriptions/802ef90a-ec01-4f2c-9b48-b3d2b9c3814b/resourceGroups/linga17/providers/Microsoft.Storage/storageAccounts/datalakestorage17"
+		}
+	}
+}
