@@ -1,0 +1,24 @@
+{
+	"name": "LS_DB_sept",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sqldatabaseserversept.database.windows.net",
+			"database": "azureSQLDB-CI",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "adeazuresql",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_AKV_SQLDB",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kvpasswordstore"
+			}
+		}
+	}
+}

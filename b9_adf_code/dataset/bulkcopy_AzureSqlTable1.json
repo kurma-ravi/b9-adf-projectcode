@@ -1,0 +1,13 @@
+{
+	"name": "bulkcopy_AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DB_sept",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

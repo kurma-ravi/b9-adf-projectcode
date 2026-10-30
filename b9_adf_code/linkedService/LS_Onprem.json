@@ -1,0 +1,22 @@
+{
+	"name": "LS_Onprem",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"server": "127.0.0.1",
+			"port": 3306,
+			"database": "b9_sql_practice",
+			"username": "root",
+			"sslMode": 1,
+			"useSystemTrustStore": 0,
+			"driverVersion": "v2",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzYmE1MDcwZi02Njk3LTQ4ZTAtYTIyMi0yMWE0ODRlZDE3ZDMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "OnPrem-IR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

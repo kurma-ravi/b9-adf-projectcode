@@ -1,0 +1,24 @@
+{
+	"name": "TG_BackupFiles_StorageEvent",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "3_PL_BackupFiles",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/sourcecontainer/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/802ef90a-ec01-4f2c-9b48-b3d2b9c3814b/resourceGroups/linga17/providers/Microsoft.Storage/storageAccounts/datalakestorage17",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_txt_file_src",
+						"type": "DatasetReference"
+					},
+					"name": "sourceDL"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_dl_aws3",
+						"type": "DatasetReference"
+					},
+					"name": "sinkDL"
+				}
+			],
+			"transformations": [
+				{
+					"name": "pivotCols"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as integer,",
+				"          Product as string,",
+				"          Sales as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> sourceDL",
+				"sourceDL pivot(groupBy(ID),",
+				"     pivotBy(Product),",
+				"     Tot_Sales_ = sum(toInteger(Sales)),",
+				"     columnNaming: '$N$V',",
+				"     lateral: true,",
+				"     partitionBy('hash', 1)) ~> pivotCols",
+				"pivotCols sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          {Order ID} as string,",
+				"          {Unit Price} as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkDL"
+			]
+		}
+	}
+}

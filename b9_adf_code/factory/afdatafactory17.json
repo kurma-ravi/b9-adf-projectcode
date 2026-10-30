@@ -1,0 +1,15 @@
+{
+	"name": "afdatafactory17",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "polandcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9176b83a-7c29-4c5d-bbbe-3d707a7539ed",
+		"tenantId": "34bd8bed-2ac1-41ae-9f08-4e0a3f11706c"
+	}
+}

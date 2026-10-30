@@ -1,0 +1,33 @@
+{
+	"name": "ds_dest_bkup_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservice1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_dest_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().p_dest_filename",
+					"type": "Expression"
+				},
+				"folderPath": "landing",
+				"fileSystem": "destination"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
